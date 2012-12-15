@@ -1,7 +1,0 @@
-C:\Users\jean\Documents\DEVELOPMENT\SOURCES\ProtoMath\ProtoMath\bin\Debug\ProtoMath.dll
-C:\Users\jean\Documents\DEVELOPMENT\SOURCES\ProtoMath\ProtoMath\bin\Debug\ProtoMath.pdb
-C:\Users\jean\Documents\DEVELOPMENT\SOURCES\ProtoMath\ProtoMath\bin\Debug\Microsoft.SqlServer.Replication.dll
-C:\Users\jean\Documents\DEVELOPMENT\SOURCES\ProtoMath\ProtoMath\bin\Debug\it\Microsoft.SqlServer.Replication.resources.dll
-C:\Users\jean\Documents\DEVELOPMENT\SOURCES\ProtoMath\ProtoMath\obj\Debug\ResolveAssemblyReference.cache
-C:\Users\jean\Documents\DEVELOPMENT\SOURCES\ProtoMath\ProtoMath\obj\Debug\ProtoMath.dll
-C:\Users\jean\Documents\DEVELOPMENT\SOURCES\ProtoMath\ProtoMath\obj\Debug\ProtoMath.pdb
