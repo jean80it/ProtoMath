@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.21022</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{68150C29-D5EB-4C40-AF40-A35F2F43956C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ProtoMath</RootNamespace>
+    <AssemblyName>ProtoMath</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>
+    </DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="Microsoft.VisualStudio.TeamSystem.Data.UnitTesting, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="2D\Animators\Attractor.cs" />
+    <Compile Include="2D\Animators\Command.cs" />
+    <Compile Include="2D\Animators\FadeOut.cs" />
+    <Compile Include="2D\Animators\ISprite.cs" />
+    <Compile Include="2D\Animators\LinearIncrement.cs" />
+    <Compile Include="2D\Animators\ParallelAnimator.cs" />
+    <Compile Include="2D\Animators\ParticleGravity.cs" />
+    <Compile Include="2D\Animators\ParticleNoise.cs" />
+    <Compile Include="2D\Animators\Pause.cs" />
+    <Compile Include="2D\Animators\PhysicsController.cs" />
+    <Compile Include="2D\Animators\PointParticle.cs" />
+    <Compile Include="2D\Animators\SpringBound.cs" />
+    <Compile Include="2D\Animators\SpringLink.cs" />
+    <Compile Include="2D\Animators\TimeLine.cs" />
+    <Compile Include="2D\Circle.cs" />
+    <Compile Include="2D\CollisionContext.cs" />
+    <Compile Include="2D\Debug\DebugHelpers.cs" />
+    <Compile Include="2D\Dependants\DependantCircle.cs" />
+    <Compile Include="2D\Dependants\DependantEntity.cs" />
+    <Compile Include="2D\Dependants\DependantLine.cs" />
+    <Compile Include="2D\Line.cs" />
+    <Compile Include="2D\Dependants\DependantScalar.cs" />
+    <Compile Include="2D\Dependants\DependantVector.cs" />
+    <Compile Include="2D\Dependants\DependantVersor.cs" />
+    <Compile Include="2D\Dependants\handlers.cs" />
+    <Compile Include="2D\Dependants\interfaces.cs" />
+    <Compile Include="2D\Animators\ConstantRotator.cs" />
+    <Compile Include="2D\Animators\interfaces.cs" />
+    <Compile Include="2D\Maths\ScalarMath.cs" />
+    <Compile Include="2D\Observables\Entity.cs" />
+    <Compile Include="2D\handlers.cs" />
+    <Compile Include="2D\Maths\FloatMath.cs" />
+    <Compile Include="2D\Maths\IScalarMath.cs" />
+    <Compile Include="2D\interfaces.cs" />
+    <Compile Include="2D\Maths\VectorMath.cs" />
+    <Compile Include="2D\Observables\interfaces.cs" />
+    <Compile Include="2D\Observables\Point.cs" />
+    <Compile Include="2D\Plains\Plains.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="2D\PolyLine.cs" />
+    <Compile Include="2D\Observables\Scalar.cs" />
+    <Compile Include="2D\Segment.cs" />
+    <Compile Include="2D\Simples\Simples.cs" />
+    <Compile Include="2D\TransformMatrix.cs" />
+    <Compile Include="2D\Triangle.cs" />
+    <Compile Include="2D\Observables\Vector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="3D\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
