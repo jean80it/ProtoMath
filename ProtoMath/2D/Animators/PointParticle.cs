@@ -78,7 +78,7 @@
 
         public IVector<T> GravitationalForceTo(IEntity<T> p, T mult)
         {
-            IVector<T> v = new ObservableVector<T,M>();
+            IVector<T> v = new Vector<T,M>();
             VectorMath<T, M>.Difference(p, _position, v);
             VectorMath<T, M>.Multiply(v.Versor, scalarMath.Multiply(scalarMath.Sqr(v.Length), mult), v);
             return v;

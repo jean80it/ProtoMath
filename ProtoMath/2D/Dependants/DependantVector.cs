@@ -33,7 +33,7 @@
 
         protected DependantVector() { }
 
-        public DependantVector(RecomputeHandler<ObservableEntity<T, M>> recomputeHandler)
+        public DependantVector(RecomputeHandler<Entity<T, M>> recomputeHandler)
         {
             if (recomputeHandler == null)
                 throw new ArgumentNullException("recomputeHandler"); // Dependant entities ALWAYS need a method to be recomputed, 
@@ -59,7 +59,7 @@
             XReference = new DependantScalar<T, M>(recomputeXHandler);
             YReference = new DependantScalar<T, M>(recomputeYHandler);
 
-            _recomputeHandler = new RecomputeHandler<ObservableEntity<T, M>>(delegate(ObservableEntity<T, M> sender) {
+            _recomputeHandler = new RecomputeHandler<Entity<T, M>>(delegate(Entity<T, M> sender) {
                 ((DependantScalar<T, M>)XReference).Validate(); 
                 ((DependantScalar<T, M>)YReference).Validate(); 
             });
@@ -75,7 +75,7 @@
         /// <returns></returns>
         public static DependantVector<T, M> GetPersistentFromExtremes(IObservableEntity<T> a, IObservableEntity<T> b)
         {
-            DependantVector<T, M> dv = new DependantVector<T, M>(new RecomputeHandler<ObservableEntity<T, M>>(delegate(ObservableEntity<T, M> e)
+            DependantVector<T, M> dv = new DependantVector<T, M>(new RecomputeHandler<Entity<T, M>>(delegate(Entity<T, M> e)
             {
                 VectorMath<T, M>.Difference(b, a, e);
             })); // could use two different DependantScalar for the axes
@@ -97,7 +97,7 @@
         /// <returns></returns>
         public static DependantVector<T, M> GetPersistentFromExtremes(IEntity<T> a, IObservableEntity<T> b)
         {
-            DependantVector<T, M> dv = new DependantVector<T, M>(new RecomputeHandler<ObservableEntity<T, M>>(delegate(ObservableEntity<T, M> e)
+            DependantVector<T, M> dv = new DependantVector<T, M>(new RecomputeHandler<Entity<T, M>>(delegate(Entity<T, M> e)
             {
                 VectorMath<T, M>.Difference(b, a, e);
             })); // could use two different DependantScalar for the axes
@@ -111,7 +111,7 @@
 
         public static DependantVector<T, M> GetPersistentOrthogonalTo(IObservableVector<T> v) // could make it accept IObservableVector
         { 
-            DependantVector<T, M> dv = new DependantVector<T, M>(new RecomputeHandler<ObservableEntity<T,M>>(delegate(ObservableEntity<T, M> e){
+            DependantVector<T, M> dv = new DependantVector<T, M>(new RecomputeHandler<Entity<T,M>>(delegate(Entity<T, M> e){
                 e.SetValue(v.Y, v.X);    
                 })); // could use two different DependantScalar for the axes
             return dv;

@@ -4,7 +4,7 @@
     using ProtoMath._2D.Maths;
     using ProtoMath._2D.Observables;
 
-    public class DependantScalar<T, M> : ObservableScalar<T, M>, IDependantScalar<T>
+    public class DependantScalar<T, M> : Scalar<T, M>, IDependantScalar<T>
         where M : IScalarMath<T>, new()
     {
         RecomputeHandler<DependantScalar<T, M>> _recomputeHandler = null;

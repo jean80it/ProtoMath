@@ -8,8 +8,8 @@
     {
         private static readonly M scalarMath = new M();
 
-        public ObservablePoint<T, M> CenterReference { get; protected set; }
-        public ObservableScalar<T, M> RadiusReference { get; protected set; }
+        public Point<T, M> CenterReference { get; protected set; }
+        public Scalar<T, M> RadiusReference { get; protected set; }
 
         public IPoint<T> Center 
         {
@@ -37,7 +37,7 @@
             }
         }
 
-        public Circle(ObservablePoint<T, M> center, ObservableScalar<T, M> radius)
+        public Circle(Point<T, M> center, Scalar<T, M> radius)
         {
             CenterReference = center;
             RadiusReference = radius;
@@ -48,11 +48,11 @@
         { }
 
         public Circle()
-            : this(new ObservablePoint<T, M>(), new ObservableScalar<T, M>())
+            : this(new Point<T, M>(), new Scalar<T, M>())
         { }
 
         public Circle(T x, T y, T r)
-            : this(new ObservablePoint<T, M>(x, y), new ObservableScalar<T, M>(r))
+            : this(new Point<T, M>(x, y), new Scalar<T, M>(r))
         { }
 
         public override string ToString()

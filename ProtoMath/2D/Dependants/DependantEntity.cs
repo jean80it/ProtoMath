@@ -4,16 +4,16 @@
     using ProtoMath._2D.Maths;
     using ProtoMath._2D.Observables;
 
-    public class DependantPoint<T, M> : ObservableEntity<T, M>, IDependantPoint<T>
+    public class DependantPoint<T, M> : Entity<T, M>, IDependantPoint<T>
         where M : IScalarMath<T>, new()
     {
-        protected RecomputeHandler<ObservableEntity<T, M>> _recomputeHandler;
+        protected RecomputeHandler<Entity<T, M>> _recomputeHandler;
 
         protected bool _valid = false;
 
         protected DependantPoint() { } // just to allow inheriting classes to implement their own stuff from scratch
 
-        public DependantPoint(RecomputeHandler<ObservableEntity<T, M>> recomputeHandler)
+        public DependantPoint(RecomputeHandler<Entity<T, M>> recomputeHandler)
         {
             if (recomputeHandler == null)
                 throw new ArgumentNullException("recomputeHandler"); // Dependant entities ALWAYS need a method to be recomputed, 

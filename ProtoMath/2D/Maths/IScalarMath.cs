@@ -3,6 +3,7 @@
     public interface IScalarMath<T>
     {
         T Zero { get; }
+        T LikeZero { get; }
         T One { get; }
 
         T Pi { get; }

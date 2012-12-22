@@ -9,19 +9,19 @@
     {
         private static readonly M scalarMath = new M();
 
-        private ObservablePoint<T, M>[] _points;
+        private Point<T, M>[] _points;
 
         protected RecomputeHandler<Circle<T, M>> _recomputeHandler;
 
         bool _valid = false;
 
-        public DependantCircle(params ObservablePoint<T, M>[] points)
-            : base(new ObservablePoint<T, M>(), new ObservableScalar<T, M>())
+        public DependantCircle(params Point<T, M>[] points)
+            : base(new Point<T, M>(), new Scalar<T, M>())
         {
             _points = points;
             _recomputeHandler = new RecomputeHandler<Circle<T, M>>(recomputeCircle);
             
-            foreach (ObservablePoint<T, M> p in _points)
+            foreach (Point<T, M> p in _points)
             {
                 p.ValueChanged += new ValueChangedHandler(delegate(object sender) { this.Invalidate(); });
             }
@@ -35,7 +35,7 @@
             T y = scalarMath.Zero;
             T c = scalarMath.Zero;
 
-            foreach (ObservablePoint<T, M> p in _points)
+            foreach (Point<T, M> p in _points)
             {
                 x = scalarMath.Sum(x, p.X);
                 y = scalarMath.Sum(y, p.Y);
@@ -49,7 +49,7 @@
 
             T squaredMaxDist = scalarMath.Zero;
 
-            foreach (ObservablePoint<T, M> p in _points)
+            foreach (Point<T, M> p in _points)
             {
                 T d = scalarMath.SquaredDistance(p.X, p.Y, x, y); // this saves some squareRoots
 

@@ -24,8 +24,7 @@
         public T PercentPathCovered { get; set; }
         public IVector<T> VersRadius = new Vector<T>(); // versor of tangent for non moving object, passing by collision point
         public IVector<T> Offset = new Vector<T>(); // x,y offset to handle "tiles"
-        //public T SquaredDistance { get; set; } // squared distance from start point to collision point, used to choose nearest collision without the hassle of doing sqrt
-
+        
         //===============================
         public ICircleCollidee<T,M> Collidee { get; set; }
 
@@ -46,7 +45,7 @@
     {
         private static readonly M scalarMath = new M();
 
-        public IPoint<T> CollisionPoint = new Point<T>(); // the point in which collision occurred; it is used to measure squaredDistance, too
+        public IPoint<T> CollisionCircleCenter = new Point<T>(); // the point in which collision occurred; it is used to measure squaredDistance, too
         
         #region ICollisionContext<T,M> Members
 
@@ -56,13 +55,29 @@
 
         public void ComputeResponse(IPoint<T> position, IVector<T> speed, ResponseCache<T, M> responseCache)
         {
+            T orthoK = scalarMath.Convert(.5f); // restitution // TODO: get it from block model
+            T longK = scalarMath.Convert(0.99); // friction // TODO: get it from block model
+
+            IVector<T> v = new Simples.Vector<T>();
+            VectorMath<T, M>.Difference(CollisionCircleCenter, (IEntity<T>)this.Collidee, v); // collidee should be a point
+            VectorMath<T, M>.Normalize(v, v);
+            TransformMatrix<T, M> m = TransformMatrix<T, M>
+                .RotationBack(v)
+                .MirrorX() // X (not Y) to compensate v is long and not ortho
+                .Scale(orthoK, longK) // inverted to compensate v is long and not ortho
+                .Rotate(v);
+
+            m.Apply(speed);
+
+            // TODO: consider offset
+            position.SetValue(CollisionCircleCenter);
             
         }
 
         #endregion
     }
 
-    public interface ICircleCollidee<T, M>
+    public interface ICircleCollidee<T, M> 
         where M : IScalarMath<T>, new()
     {
         bool IsCollidingWithCircle(ICircle<T> circle, IVector<T> offset, IVector<T> movement, ref ICollisionContext<T, M> lastCollisionContext);

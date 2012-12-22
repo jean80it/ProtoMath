@@ -3,7 +3,7 @@
     using Dependants;
     using ProtoMath._2D.Maths;
 
-    public class ObservableVector<T, M> : ObservableEntity<T, M>, IObservableVector<T>
+    public class Vector<T, M> : Entity<T, M>, IObservableVector<T>
         where M : IScalarMath<T>, new()
     {
         private static readonly M scalarMath = new M();
@@ -16,11 +16,11 @@
 
         public T Length { get { return LenghtReference.Value; } }
 
-        public ObservableVector()
+        public Vector()
             : this(default(T), default(T))
         { }
 
-        public ObservableVector(T x, T y) 
+        public Vector(T x, T y) 
             :base(x, y)
         {
             VersorReference = new DependantVersor<T, M>(this);

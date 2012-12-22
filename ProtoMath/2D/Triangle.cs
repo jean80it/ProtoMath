@@ -9,13 +9,13 @@
     {
         private static readonly M scalarMath = new M();
 
-        ObservablePoint<T, M> A, B, C;
+        Point<T, M> A, B, C;
 
         Segment<T, M> s1, s2, s3;
 
         public Circle<T, M> BoundingCircle { get; protected set; }
 
-        public Triangle(ObservablePoint<T, M> a, ObservablePoint<T, M> b, ObservablePoint<T, M> c)
+        public Triangle(Point<T, M> a, Point<T, M> b, Point<T, M> c)
         {
             A = a;
             B = b;

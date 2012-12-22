@@ -345,10 +345,10 @@
 
         public TransformMatrix<T, M> ComputeResponseMatrix()
         {
-            T orthoK = scalarMath.Convert(0.0); // restitution // TODO: get it from block model
+            T orthoK = scalarMath.Convert(0.5); // restitution // TODO: get it from block model
             T longK = scalarMath.Convert(0.99); // friction // TODO: get it from block model
 
-            ObservableVector<T, M> v = new ObservableVector<T, M>();
+            Vector<T, M> v = new Vector<T, M>();
             VectorMath<T, M>.GetNegative(this.LongitudinalVersor, v);
 
             TransformMatrix<T, M> m = TransformMatrix<T, M>

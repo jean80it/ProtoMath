@@ -33,9 +33,9 @@ namespace ProtoMath._2D.Maths
             result.SetValue(scalarMath.Difference(e1.X, e2.X), scalarMath.Difference(e1.Y, e2.Y));
         }
 
-        public static void GetLenght(IVector<T> v, out T length)
+        public static T GetLenght(IVector<T> v)
         {
-            length = scalarMath.Length(v.X, v.Y);
+            return scalarMath.Length(v.X, v.Y);
         }
         
         public static void GetLenght(IVector<T> v, IScalar<T> length)
@@ -100,6 +100,23 @@ namespace ProtoMath._2D.Maths
                             scalarMath.Multiply(scalarMath.Sin(a), r)
                         )
                 );
+        }
+
+        public static bool Normalize(IVector<T> vector, IVector<T> destVector)
+        {
+            T len = GetLenght(vector);
+            if (!scalarMath.IsLikeZero(len))
+            {
+                destVector.SetValue(
+                    scalarMath.Divide(vector.X, len),
+                    scalarMath.Divide(vector.Y, len)
+                    );
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

@@ -89,10 +89,10 @@
         // [y,  x, 0]
         // [0,  0, 1]
         //
-        public static TransformMatrix<T, M> Rotation(IObservableVector<T> right)
+        public static TransformMatrix<T, M> Rotation(IVector<T> rightVersor)
         {
-            T c = right.Versor.X;
-            T s = right.Versor.Y;
+            T c = rightVersor.X;
+            T s = rightVersor.Y;
 
             return new TransformMatrix<T, M>(
                 c, scalarMath.Negate(s), scalarMath.Zero,
@@ -106,10 +106,10 @@
         // [-y, x, 0]
         // [ 0, 0, 1]
         //
-        public static TransformMatrix<T, M> RotationBack(IObservableVector<T> right)
+        public static TransformMatrix<T, M> RotationBack(IVector<T> rightVersor)
         {
-            T c = right.Versor.X;
-            T s = scalarMath.Negate(right.Versor.Y);
+            T c = rightVersor.X;
+            T s = scalarMath.Negate(rightVersor.Y);
 
             return new TransformMatrix<T, M>(
                 c, scalarMath.Negate(s), scalarMath.Zero,
@@ -207,10 +207,10 @@
         // [s,  c, 0] [D, E, F] = [A*y+D*x, B*y+E*x, C*y+F*x]
         // [0,  0, 1] [G, H, I]   [G      , H      , I      ]
         //
-        public TransformMatrix<T, M> Rotate(IVector<T> right)
+        public TransformMatrix<T, M> Rotate(IVector<T> rightVersor)
         {
-            T c = right.Versor.X;
-            T s = right.Versor.Y;
+            T c = rightVersor.X;
+            T s = rightVersor.Y;
 
             T t;
             
@@ -235,10 +235,10 @@
         // [s,  c, 0] [D, E, F] = [-A*s+D*c, -B*s+E*c, -C*s+F*c]
         // [0,  0, 1] [G, H, I]   [ G      ,  H      ,  I      ]
         //
-        public TransformMatrix<T, M> RotateBack(IVector<T> right)
+        public TransformMatrix<T, M> RotateBack(IVector<T> rightVersor)
         {
-            T c = right.Versor.X;
-            T ns = scalarMath.Negate(right.Versor.Y);
+            T c = rightVersor.X;
+            T ns = scalarMath.Negate(rightVersor.Y);
 
             T t;
 

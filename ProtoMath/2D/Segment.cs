@@ -1,13 +1,13 @@
 ﻿namespace ProtoMath._2D
 {
+    using System;
+
     using ProtoMath._2D.Dependants;
     using ProtoMath._2D.Maths;
-    using ProtoMath._2D.Simples;
     using ProtoMath._2D.Observables;
     using System.Collections.Generic;
     using ProtoMath._2D.Plains;
-    using System;
-
+    
     public class Segment<T, M> : ICircleCollidee<T,M>
         where M : IScalarMath<T>, new()
     {
@@ -16,8 +16,8 @@
         public IPoint<T> A { get { return AReference; } }
         public IPoint<T> B { get { return BReference; } }
 
-        public ObservablePoint<T, M> AReference { get; protected set; }
-        public ObservablePoint<T, M> BReference { get; protected set; }
+        public Point<T, M> AReference { get; protected set; }
+        public Point<T, M> BReference { get; protected set; }
 
         public DependantVector<T, M> Vector { get; protected set; }
         public DependantVersor<T, M> Versor { get; protected set;}
@@ -40,12 +40,12 @@
             }
         }
 
-        public Segment(ObservablePoint<T, M> a, ObservablePoint<T, M> b)
+        public Segment(Point<T, M> a, Point<T, M> b)
         {
             AReference = a;
             BReference = b;
 
-            Vector = new DependantVector<T, M>(new RecomputeHandler<ObservableEntity<T,M>>(delegate(ObservableEntity<T, M> e){
+            Vector = new DependantVector<T, M>(new RecomputeHandler<Entity<T,M>>(delegate(Entity<T, M> e){
                 e.SetValue(
                     scalarMath.Difference(B.X, A.X), 
                     scalarMath.Difference(B.Y, A.Y)
@@ -63,11 +63,11 @@
         }
 
         public Segment()
-            : this(new ObservablePoint<T, M>(), new ObservablePoint<T, M>())
+            : this(new Point<T, M>(), new Point<T, M>())
         { }
 
         public Segment(T ax, T ay, T bx, T by)
-            : this(new ObservablePoint<T, M>(ax, ay), new ObservablePoint<T, M>(bx, by))
+            : this(new Point<T, M>(ax, ay), new Point<T, M>(bx, by))
         { }
 
         public override string ToString()

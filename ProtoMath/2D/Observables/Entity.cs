@@ -2,21 +2,21 @@
 {
     using ProtoMath._2D.Maths;
 
-    public abstract class ObservableEntity<T, M> : IObservableEntity<T>
+    public abstract class Entity<T, M> : IObservableEntity<T>
         where M : IScalarMath<T>, new()
     {
         public event ValueChangedHandler ValueChanged;
 
-        public ObservableScalar<T, M> XReference { get; protected set; }
-        public ObservableScalar<T, M> YReference { get; protected set; }
+        public Scalar<T, M> XReference { get; protected set; }
+        public Scalar<T, M> YReference { get; protected set; }
 
         public T X { get { return XReference.Value; } set { XReference.Value = value; } }
         public T Y { get { return YReference.Value; } set { YReference.Value = value; } }
 
-        public ObservableEntity()
+        public Entity()
         {
-            XReference = new ObservableScalar<T, M>();
-            YReference = new ObservableScalar<T, M>();
+            XReference = new Scalar<T, M>();
+            YReference = new Scalar<T, M>();
 
             var handler = new ValueChangedHandler(delegate(object sender)
             {
@@ -30,7 +30,7 @@
             YReference.ValueChanged += handler;
         }
 
-        public ObservableEntity(ObservableScalar<T, M> x, ObservableScalar<T, M> y)
+        public Entity(Scalar<T, M> x, Scalar<T, M> y)
         {
             XReference = x;
             YReference = y;
@@ -46,8 +46,8 @@
             YReference.ValueChanged += handler;
         }
 
-        public ObservableEntity(T x, T y)
-            : this(new ObservableScalar<T, M>(x), new ObservableScalar<T, M>(y))
+        public Entity(T x, T y)
+            : this(new Scalar<T, M>(x), new Scalar<T, M>(y))
         { }
 
         protected virtual void OnValueChanged()

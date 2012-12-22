@@ -20,6 +20,7 @@
         #region IScalarMath<float> Members
 
         public float Zero { get { return 0.0f; } }
+        public float LikeZero { get { return 0.0001f; } }
         public float One { get { return 1.0f; } }
 
         const float _pi2 = (float)(Math.PI * 2);

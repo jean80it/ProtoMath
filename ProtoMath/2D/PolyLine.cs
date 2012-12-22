@@ -13,15 +13,15 @@
     {
         private static readonly M scalarMath = new M();
 
-        ObservablePoint<T, M>[] _points;
+        Point<T, M>[] _points;
 
-        public ObservablePoint<T, M>[] Points { get { return _points; } }
+        public Point<T, M>[] Points { get { return _points; } }
 
         List<Segment<T, M>> _segments;
 
         public Circle<T, M> BoundingCircle { get; protected set; }
 
-        public PolyLine(params ObservablePoint<T, M>[] points)
+        public PolyLine(params Point<T, M>[] points)
         {
             int len = points.Length;
             if (len < 2)
@@ -49,11 +49,11 @@
                 throw new Exception("PolyLine needs at least two points.");
             }
 
-            _points = new ObservablePoint<T,M>[len];
+            _points = new Point<T,M>[len];
 
             for (int i = 0, p = 0; p < len; i += 2, ++p)
             {
-                _points[p] = new ObservablePoint<T, M>(points[i], points[i + 1]);
+                _points[p] = new Point<T, M>(points[i], points[i + 1]);
             }
             
             _segments = new List<Segment<T, M>>(len);
@@ -69,7 +69,7 @@
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder();
-            foreach (ObservablePoint<T, M> p in Points)
+            foreach (Point<T, M> p in Points)
             {
                 sb.Append(p.ToString());
             }

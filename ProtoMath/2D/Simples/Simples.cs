@@ -1,6 +1,6 @@
 ﻿namespace ProtoMath._2D.Simples
 {
-    public struct SimpleScalar<T> : IScalar<T>
+    public struct Scalar<T> : IScalar<T>
     {
         public T Value { get; set; }
 
@@ -10,7 +10,7 @@
         }
     }
 
-    public struct SimplePoint<T> : IPoint<T>
+    public struct Point<T> : IPoint<T>
     {
         public T X { get; set; }
 
@@ -34,7 +34,7 @@
         }
     }
 
-    public struct SimpleVector<T> : IVector<T>
+    public struct Vector<T> : IVector<T>
     {
         public T X { get; set; }
 
@@ -62,11 +62,16 @@
         }
     }
 
-    public struct SimpleCircle<T> : ICircle<T>
+    public struct Circle<T> : ICircle<T>
     {
 
         public IPoint<T> Center {get; set;}
         
         public T Radius {get; set;}
+
+        public override string ToString()
+        {
+            return "{" + Center + ", " + Radius + "}";
+        }
     }
 }

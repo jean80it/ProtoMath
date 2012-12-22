@@ -13,7 +13,7 @@
         private string _name = "[DependantVersor2D " + (++ProtoMath.Debug.DebugHelpers.Ticket) + "]";
 #endif
 
-        public DependantVersor(RecomputeHandler<ObservableEntity<T, M>> recomputeHandler)
+        public DependantVersor(RecomputeHandler<Entity<T, M>> recomputeHandler)
         {
             if (recomputeHandler == null)
                 throw new ArgumentNullException("recomputeHandler"); // Dependant entities ALWAYS need a method to be recomputed, 
@@ -31,7 +31,7 @@
         }
 
         public DependantVersor(IObservableVector<T> vector)
-            :this(delegate(ObservableEntity<T, M> e)
+            :this(delegate(Entity<T, M> e)
             { // or, "how to recompute versor when needed"...
                 IVector<T> v = (IVector<T>)e;
                 if (!scalarMath.IsLikeZero(v.Length))
@@ -48,7 +48,7 @@
 
         public static DependantVersor<T, M> FromOrthogonalVector(IObservableVector<T> vector)
         {
-            DependantVersor<T, M> versor = new DependantVersor<T, M>(delegate(ObservableEntity<T, M> e)
+            DependantVersor<T, M> versor = new DependantVersor<T, M>(delegate(Entity<T, M> e)
             { // or, "how to recompute versor when needed"...
                 IVector<T> v = (IVector<T>)e;
                 if (!scalarMath.IsLikeZero(v.Length))
